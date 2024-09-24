@@ -1,11 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import CategoryList from './components/Category/CategoryList';
+import { CategoryProvider } from './context/CategoryContext';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <h1>Esto va a ser la app</h1>
+    <CategoryProvider>
+      <CategoryList />
+    </CategoryProvider>
   );
-}
+};
 
 export default App;
