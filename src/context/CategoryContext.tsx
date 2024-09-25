@@ -35,6 +35,7 @@ export const CategoryProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
     return (
         <CategoryContext.Provider value={{ categories, loading, error }}>
+            <h1>Categories</h1>
             {children}
         </CategoryContext.Provider>
     );
