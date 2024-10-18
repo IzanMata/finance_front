@@ -1,13 +1,17 @@
 import './App.css';
 import React from 'react';
-import CategoryList from './components/Category/CategoryList';
-import { CategoryProvider } from './context/CategoryContext';
+import Home from './routes/Home';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Transactions from './routes/Transactions';
 
 const App: React.FC = () => {
   return (
-    <CategoryProvider>
-      <CategoryList />
-    </CategoryProvider>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/transactions" element={<Transactions />} />
+      </Routes>
+    </Router>
   );
 };
 

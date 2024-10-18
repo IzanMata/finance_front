@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from '@mui/material/Grid2';
+import { Category } from '../../models';
 import { useCategories } from '../../context/CategoryContext'
-import { Category } from '../../models/Category';
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
 
 const CategoryCard: React.FC<{ category: Category }> = ({ category }) => (

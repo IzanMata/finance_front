@@ -1,9 +1,9 @@
-import { Category } from '../models/Category';
+import { API_URL } from '../constants';
+import { Category } from '../models';
 
 export const fetchCategories = async (): Promise<Category[]> => {
-    const response = await fetch("http://127.0.0.1:8000/categories/");
 
-    console.log(response)
+    const response = await fetch(`${API_URL}/categories/`);
 
     if (!response.ok) {
         throw new Error("Error al cargar las categorías");
