@@ -14,14 +14,14 @@ export const fetchTransactions = async (): Promise<Transaction[]> => {
     
 };
 
-export const addTransaction = async (transaction: Transaction) => {
+export const addTransaction = async (transaction: Transaction): Promise<Transaction>  => {
 
     const response = await fetch(`${API_URL}/transactions/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify("asdasd"),
+        body: JSON.stringify(transaction),
     });
 
     if (!response.ok) {
@@ -32,7 +32,7 @@ export const addTransaction = async (transaction: Transaction) => {
     
 };
 
-const modifyTransaction = async (transactionId: number, transaction: Transaction) => {
+export const modifyTransaction = async (transactionId: number, transaction: Transaction) => {
     
     const response = await fetch(`${API_URL}/transactions/${transactionId}/`, {
         method: 'PUT',
@@ -47,8 +47,22 @@ const modifyTransaction = async (transactionId: number, transaction: Transaction
         throw new Error(`Error: ${errorData.message || 'Failed to modify transaction'}`);
     }
 
-    const data = await response.json();
-    console.log('Transaction modified:', data);
-    return data;
+    return await response.json();
 
+};
+
+export const deleteTransaction = async (transactionId: number) => {
+    
+    const response = await fetch(`${API_URL}/transactions/${transactionId}/`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    });
+
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(`Error: ${errorData.message || 'Failed to modify transaction'}`);
+    }
+    
 };

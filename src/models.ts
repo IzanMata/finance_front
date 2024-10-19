@@ -21,7 +21,7 @@ export interface Transaction {
     category:    number;
 }
 
-export interface Expenses {
+export interface Expense {
     id?:           number;
     description:  string;
     expense_type: string;
