@@ -1,26 +1,37 @@
 import * as React from 'react';
 import { Transaction } from "../models";
-import { addTransaction, deleteTransaction, modifyTransaction } from "../services/transactionService"
+import { fetchTransactions } from "../services/transactionService"
 import TransactionList from '../components/transaction/transactionList';
+import { useEffect, useState } from 'react';
 
-const newTransaction: Transaction = {
-    type: 'income',
-    amount: 250.00,
-    description: 'Salary for dasdasdasd',
-    account: 1,
-    category: 1,
-    datetime: new Date()
-};
 
 const Transactions: React.FC = () => {
+
+    const [transactions_data, setTransactions] = useState<Transaction[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const loadTransactions = async () => {
+            try {
+                const data = await fetchTransactions();
+                setTransactions(data);
+            } catch (error) {
+                Error("Error al cargar las transacciones.");
+            } finally {
+                setLoading(false);
+            }
+        };
+    
+        loadTransactions();
+
+    }, []);
+
+    if (loading) return <div>Cargando...</div>;
 
     return (
         <div>
             <h1>Transacciones</h1>
-            <button onClick={() => addTransaction(newTransaction)}>Agregar transacción</button>
-            <button onClick={() => deleteTransaction(5)}>Delete transacción</button>
-            <button onClick={() => modifyTransaction(4, newTransaction)}>Modify transacción</button>
-            <TransactionList />
+            <TransactionList transaction_list={transactions_data} />
         </div>
     )
 

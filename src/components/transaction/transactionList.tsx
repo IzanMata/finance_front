@@ -1,18 +1,17 @@
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
+import { Transaction } from "../../models";
 
-export default function TransactionList() {
+interface TransactionListProps {
+    transaction_list: Transaction[];
+}
+
+export default function TransactionList({transaction_list} : TransactionListProps) {
     return (
         <Box sx={{ height: 250, width: "100%" }}>
             <DataGrid
-                columns={[{ field: "username" }, { field: "age" }]}
-                rows={[
-                {
-                    id: 1,
-                    username: "@MUI",
-                    age: 20,
-                },
-                ]}
+                columns={[{ field: "datetime" }, { field: "amount" }, { field: "description" }]}
+                rows={transaction_list}
             />
         </Box>
     );
