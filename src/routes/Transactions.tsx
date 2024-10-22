@@ -3,6 +3,7 @@ import { Transaction } from "../models";
 import { fetchTransactions } from "../services/transactionService"
 import TransactionList from '../components/transaction/transactionList';
 import { useEffect, useState } from 'react';
+import { PageContainer } from '@toolpad/core';
 
 
 const Transactions: React.FC = () => {
@@ -29,10 +30,12 @@ const Transactions: React.FC = () => {
     if (loading) return <div>Cargando...</div>;
 
     return (
-        <div>
-            <h1>Transacciones</h1>
-            <TransactionList transaction_list={transactions_data} />
-        </div>
+        <PageContainer maxWidth="xl">
+            <div>
+            <h1>Transactions</h1>
+                <TransactionList transaction_list={transactions_data} />
+            </div>
+        </PageContainer>
     )
 
 }
