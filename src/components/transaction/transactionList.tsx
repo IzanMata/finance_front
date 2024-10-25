@@ -1,7 +1,6 @@
 import Box from "@mui/material/Box";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { Transaction } from "../../models";
-import { getCategoryById } from "../../services/categoryService";
 
 interface TransactionListProps {
   transaction_list: Transaction[];
@@ -11,10 +10,10 @@ export default function TransactionList({
   transaction_list,
 }: TransactionListProps) {
   const columns: GridColDef[] = [
-    { field: "datetime", headerName: "Fecha y Hora", width: 150 },
-    { field: "amount", headerName: "Monto", width: 100 },
-    { field: "description", headerName: "Descripción", width: 200 },
-    { field: "category_name", headerName: "Categoría", width: 150 },
+    { field: "datetime", headerName: "DateTime", width: 150 },
+    { field: "amount", headerName: "Amount", width: 100 },
+    { field: "description", headerName: "Description", width: 200 },
+    { field: "category_name", headerName: "Category", width: 150 },
   ];
 
   const rows = transaction_list.map((transaction, index) => {
