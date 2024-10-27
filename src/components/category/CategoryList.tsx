@@ -1,45 +1,29 @@
-import React from 'react';
-import Grid from '@mui/material/Grid2';
-import {Category} from '../../models';
-import {useCategories} from '../../context/CategoryContext'
-import {Card, CardActionArea, CardContent, CardMedia, Typography} from '@mui/material';
+import Grid from "@mui/material/Grid2";
+import { Card, CardContent, Typography } from "@mui/material";
+import { Category } from "../../models";
 
-const CategoryCard: React.FC<{ category: Category }> = ({category}) => (
-    <Card sx={{maxWidth: 345}}>
-        <CardActionArea>
-            <CardMedia
-                component="img"
-                height="140"
-                alt={category.name}
-            />
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                    {category.name}
-                </Typography>
-                <Typography variant="body2" sx={{color: 'text.secondary'}}>
-                    {category.description || "Sin descripción disponible"}
-                </Typography>
-            </CardContent>
-        </CardActionArea>
-    </Card>
-);
+interface TransactionListProps {
+    categoriesList: Category[];
+}
 
-const CategoryList: React.FC = () => {
-
-    const {categories, loading, error} = useCategories();
-
-    if (loading) return <p>Cargando...</p>;
-    if (error) return <p>{error}</p>;
-
+export const categoryList = ({ categoriesList }: TransactionListProps) => {
     return (
-        <Grid container spacing={3}>
-            {categories.map((category: Category) => (
-                <Grid key={category.id} size={{xs: 6, md: 8}}>
-                    <CategoryCard category={category}/>
+        <Grid container spacing={2}>
+            <h2>Categories</h2>
+            {categoriesList.map((category, index) => (
+                <Grid key={index}>
+                    <Card>
+                        <CardContent>
+                            <Typography variant="h6" component="div">
+                                {category.name}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                {category.description}
+                            </Typography>
+                        </CardContent>
+                    </Card>
                 </Grid>
             ))}
         </Grid>
     );
 };
-
-export default CategoryList;

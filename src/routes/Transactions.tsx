@@ -1,13 +1,11 @@
-import * as React from 'react';
+import * as React from "react";
+import { useEffect, useState } from "react";
 import { Transaction } from "../models";
-import { fetchTransactions } from "../services/transactionService"
-import TransactionList from '../components/transaction/transactionList';
-import { useEffect, useState } from 'react';
-import { PageContainer } from '@toolpad/core';
-
+import { fetchTransactions } from "../services/transactionService";
+import TransactionList from "../components/transaction/transactionList";
+import { PageContainer } from "@toolpad/core";
 
 const Transactions: React.FC = () => {
-
     const [transactions_data, setTransactions] = useState<Transaction[]>([]);
     const [loading, setLoading] = useState(true);
 
@@ -22,9 +20,8 @@ const Transactions: React.FC = () => {
                 setLoading(false);
             }
         };
-    
-        loadTransactions();
 
+        loadTransactions();
     }, []);
 
     if (loading) return <div>Cargando...</div>;
@@ -32,12 +29,11 @@ const Transactions: React.FC = () => {
     return (
         <PageContainer maxWidth="xl">
             <div>
-            <h1>Transactions</h1>
-                <TransactionList transaction_list={transactions_data} />
+                <h1>Transactions</h1>
+                <TransactionList transactionList={transactions_data} />
             </div>
         </PageContainer>
-    )
+    );
+};
 
-}
-
-export default Transactions
+export default Transactions;
