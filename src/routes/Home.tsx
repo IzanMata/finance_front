@@ -4,10 +4,11 @@ import Box from "@mui/material/Box";
 import { PageContainer } from "@toolpad/core";
 import MenuAppBar from "../components/navegation/NavBar";
 import { useLoadData } from "../hook/loadData";
+import TransactionList from "../components/transaction/transactionList";
 
 const Home = () => {
     
-    const { categories, accounts, account, error } = useLoadData();
+    const { categories, accounts, transactions, account, error } = useLoadData();
 
     if (error) {
         return <Typography color="error">{error}</Typography>;
@@ -34,6 +35,10 @@ const Home = () => {
                     <Box sx={{ height: 300 }}></Box>
                 </Grid>
             </Grid>
+            <div>
+                <h1>Transactions</h1>
+                <TransactionList transactionList={transactions} />
+            </div>
             <h2>Categories</h2>
             <Grid container spacing={2}>
                 {categories.map((category, index) => (

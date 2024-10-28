@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Account, Category } from "../models";
+import { Account, Category, Transaction } from "../models";
 import { categoryRepository } from "../repositories/categoryRepository";
 import { accountRepository } from "../repositories/accountRepository";
+import { transactionRepository } from "../repositories/transactionRepository";
 
 
 export function useLoadData() {
@@ -10,16 +11,19 @@ export function useLoadData() {
     const [accounts, setAccounts] = useState<Account[]>([]);
     const [account, setAccount] = useState<Account | null>(null);
     const [error, setError] = useState<string | null>(null);
+    const [transactions, setTransactions] = useState<Transaction[]>([]);
 
     const loadData = async () => {
         try {
-            const [categoriesData, accountsData] = await Promise.all([
+            const [categoriesData, accountsData, transactionsData] = await Promise.all([
                 categoryRepository.getCategories(),
-                accountRepository.getAccounts()
+                accountRepository.getAccounts(),
+                transactionRepository.getTransactions()
             ]);
 
             setCategories(categoriesData);
             setAccounts(accountsData);
+            setTransactions(transactionsData)
 
             if (accountsData.length > 0) {
                 setAccount(accountsData[0]);
@@ -35,6 +39,6 @@ export function useLoadData() {
     }, []);
     
 
-    return { categories, accounts, account, error };
+    return { categories, accounts, transactions, account, error };
 
 }
