@@ -1,53 +1,29 @@
-# Getting Started with Create React App
+# Finance Manager
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+**Finance Manager** is a web application designed to help users effectively manage their daily finances. With features to track both recurring and one-time expenses, this application empowers users to create savings plans and visualize their spending habits across various categories. By providing a user-friendly interface, Finance Manager helps individuals make informed financial decisions and achieve their savings goals.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Expense Tracking**: Easily log your daily expenses, including both recurring and one-time expenditures.
+  
+- **Savings Planning**: Set up savings goals and track your progress over time. The application will help you plan how much to save and monitor your achievements.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Categorical Breakdown**: Visualize your spending habits through detailed categorizations. Users can allocate expenses into categories such as food, transportation, entertainment, utilities, and more.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **Dynamic Charts and Reports**: Generate visual representations of your spending patterns and savings progress. Analyze where your money goes and how it aligns with your savings goals.
 
-### `npm test`
+- **Customizable Alerts**: Set alerts for when you approach your budget limits in specific categories or when it’s time to transfer savings into your savings plan.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more
-information.
+- **Historical Data**: View past spending and savings data to help make better financial decisions in the future.
 
-### `npm run build`
+- **User-Friendly Interface**: Designed with an intuitive layout, making it easy for anyone to navigate and manage their finances.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Technologies Used
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will
-remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right
-into your project so you have full control over them. All of the commands except `eject` will still work, but they will
-point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you
-shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t
-customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in
-the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Frontend**: React.js with Typescript
+- **Backend**: Django
+- **Database**: Mysql
+- **Charting Library**: Chart.js or D3.js for visualizations
+- **Styling**: [MUI](https://mui.com/)
