@@ -3,19 +3,17 @@ import {Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import { PageContainer } from "@toolpad/core";
 import MenuAppBar from "../components/navegation/NavBar";
-import { useCategories, useLoadData } from "../hook/loadData";
+import { useAccounts, useCategories, useTransactions } from "../hook/loadData";
 import TransactionList from "../components/transaction/transactionList";
 import CategoryList from "../components/category/CategoryList";
 
 const Home = () => {
     
-    const { accounts, transactions, account, error } = useLoadData();
-
     const categories = useCategories()
+    const accounts = useAccounts()
+    const transactions = useTransactions()
 
-    if (error) {
-        return <Typography color="error">{error}</Typography>;
-    }
+    const account = accounts[0]
 
     return (
         <PageContainer maxWidth="xl">
