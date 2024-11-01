@@ -2,39 +2,38 @@ import Grid from "@mui/material/Grid2";
 import { Card, CardContent, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import { PageContainer } from "@toolpad/core";
-import { useEffect, useState } from "react";
-import { Category } from "../models";
-import { fetchCategories } from "../services/categoryService";
+import MenuAppBar from "../components/navegation/NavBar";
+import { useLoadData } from "../hook/loadData";
 
 const Home = () => {
-    const [categories, setCategories] = useState<Category[]>([]);
+    
+    const { categories, accounts, account, error } = useLoadData();
 
-    useEffect(() => {
-        const loadTransactions = async () => {
-            try {
-                const data = await fetchCategories();
-                setCategories(data);
-            } catch (error) {
-                Error("Error al cargar las transacciones.");
-            }
-        };
+    if (error) {
+        return <Typography color="error">{error}</Typography>;
+    }
 
-        loadTransactions();
-    }, []);
+
 
     return (
         <PageContainer maxWidth="xl">
+            <MenuAppBar />
+            <h2>Accounts</h2>
+            {accounts.map((account, index) => (
+                <Grid key={index}>
+                    <h2>{account.amount}</h2>
+                </Grid>
+            ))}
             <Grid container spacing={2}>
                 <Grid>
                     <Typography variant="h1" component="h1">
-                        1550,00 $
+                        {account?.amount} $
                     </Typography>
                 </Grid>
                 <Grid>
                     <Box sx={{ height: 300 }}></Box>
                 </Grid>
             </Grid>
-
             <h2>Categories</h2>
             <Grid container spacing={2}>
                 {categories.map((category, index) => (
