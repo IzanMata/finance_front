@@ -23,7 +23,7 @@ export const getCategoryById = async (
     return await response.json();
 };
 
-export const addCategory = async (category: Category): Promise<Category> => {
+export const addCategory = async (category: Category) => {
     const response = await fetch(`${API_URL}/categories/`, {
         method: "POST",
         headers: {
@@ -36,7 +36,7 @@ export const addCategory = async (category: Category): Promise<Category> => {
         throw new Error(`Error al crear la transacción con el importe de €`);
     }
 
-    return await response.json();
+
 };
 
 export const modifyCategory = async (

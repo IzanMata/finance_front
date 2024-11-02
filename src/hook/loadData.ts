@@ -7,7 +7,6 @@ import { transactionRepository } from "../repositories/transactionRepository";
 
 export function useLoadData() {
 
-    const [categories, setCategories] = useState<Category[]>([]);
     const [accounts, setAccounts] = useState<Account[]>([]);
     const [account, setAccount] = useState<Account | null>(null);
     const [error, setError] = useState<string | null>(null);
@@ -15,13 +14,11 @@ export function useLoadData() {
 
     const loadData = async () => {
         try {
-            const [categoriesData, accountsData, transactionsData] = await Promise.all([
-                categoryRepository.getCategories(),
+            const [ accountsData, transactionsData] = await Promise.all([
                 accountRepository.getAccounts(),
                 transactionRepository.getTransactions()
             ]);
 
-            setCategories(categoriesData);
             setAccounts(accountsData);
             setTransactions(transactionsData)
 
@@ -39,6 +36,25 @@ export function useLoadData() {
     }, []);
     
 
-    return { categories, accounts, transactions, account, error };
+    return {accounts, transactions, account, error };
 
+}
+
+export function useCategories() {
+    const [categories, setCategories] = useState<Category[]>([]);
+
+    const loadCategories = async () => {
+        try {
+            const data = await categoryRepository.getCategories();
+            setCategories(data);
+        } catch (err) {
+            Error("Error al cargar las categorías");
+        }
+    };
+
+    useEffect(() => {
+        loadCategories();
+    }, [categories]);
+
+    return categories;
 }
