@@ -1,5 +1,5 @@
 import { API_URL } from "../constants";
-import { Transaction } from "../models";
+import { Transaction } from "../types";
 import { TransactionException } from "../errors/transactionErros";
 
 export const fetchTransactions = async (): Promise<Transaction[]> => {

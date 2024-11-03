@@ -3,13 +3,11 @@ import {Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import { PageContainer } from "@toolpad/core";
 import MenuAppBar from "../components/navegation/NavBar";
-import { useAccounts, useCategories, useTransactions } from "../hook/loadData";
+import { useAccounts, useTransactions } from "../hook/LoadData";
 import TransactionList from "../components/transaction/transactionList";
-import CategoryList from "../components/category/CategoryList";
+import CategoryComponent from "../components/category/CategoryComponent";
 
 const Home = () => {
-    
-    const categories = useCategories()
     const accounts = useAccounts()
     const transactions = useTransactions()
 
@@ -38,8 +36,7 @@ const Home = () => {
                 <h1>Transactions</h1>
                 <TransactionList transactionList={transactions} />
             </div>
-            <h2>Categories</h2>
-            <CategoryList categoriesList={categories}/>
+            <CategoryComponent /> 
         </PageContainer>
     );
 };

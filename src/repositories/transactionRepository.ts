@@ -1,4 +1,4 @@
-import { Transaction } from "../models";
+import { Transaction } from "../types";
 import { fetchTransactions } from './../services/transactionService';
 
 export const transactionRepository = {

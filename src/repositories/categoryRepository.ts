@@ -1,4 +1,4 @@
-import { Category } from "../models";
+import { Category } from "../types";
 import { addCategory, fetchCategories } from "../services/categoryService";
 
 export const categoryRepository = {

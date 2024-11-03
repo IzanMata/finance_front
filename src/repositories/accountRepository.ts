@@ -1,4 +1,4 @@
-import { Account } from "../models";
+import { Account } from "../types";
 import { fetchAccounts } from "../services/accountService";
 
 export const accountRepository = {

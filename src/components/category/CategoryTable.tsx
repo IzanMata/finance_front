@@ -1,6 +1,6 @@
 import React from "react";
 import Grid from "@mui/material/Grid2";
-import { Category } from "../../models";
+import { Category } from "../../types";
 import { useCategories } from "../../context/CategoryContext";
 import {
     Card,

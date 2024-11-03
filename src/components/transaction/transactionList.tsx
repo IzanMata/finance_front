@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import { Transaction } from "../../models";
+import { Transaction } from "../../types";
 
 interface TransactionListProps {
     transactionList: Transaction[];

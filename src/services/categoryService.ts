@@ -1,5 +1,5 @@
 import { API_URL } from "../constants";
-import { Category } from "../models";
+import { Category } from "../types";
 
 export const fetchCategories = async (): Promise<Category[]> => {
     const response = await fetch(`${API_URL}/categories/`);
@@ -36,7 +36,7 @@ export const addCategory = async (category: Category) => {
         throw new Error(`Error al crear la transacción con el importe de €`);
     }
 
-
+    return await response.json();
 };
 
 export const modifyCategory = async (
@@ -62,6 +62,7 @@ export const modifyCategory = async (
 };
 
 export const deleteCategory = async (categoryId: number) => {
+    console.log("deleting " + categoryId)
     const response = await fetch(`${API_URL}/categories/${categoryId}/`, {
         method: "DELETE",
         headers: {
@@ -69,10 +70,8 @@ export const deleteCategory = async (categoryId: number) => {
         },
     });
 
-    if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(
-            `Error: ${errorData.message || "Failed to modify category"}`,
-        );
-    }
+    console.log("deleted")
+    console.log(response.ok)
+    console.log(response)
+
 };

@@ -1,5 +1,5 @@
 import { API_URL } from "../constants";
-import { Account } from "../models";
+import { Account } from "../types";
 
 export const fetchAccounts = async (): Promise<Account[]> => {
     const response = await fetch(`${API_URL}/accounts/`);

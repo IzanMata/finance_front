@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
-import { Transaction } from "../models";
+import { Transaction } from "../types";
 import { fetchTransactions } from "../services/transactionService";
 import TransactionList from "../components/transaction/transactionList";
 import { PageContainer } from "@toolpad/core";
