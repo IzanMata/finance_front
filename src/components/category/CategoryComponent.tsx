@@ -8,36 +8,30 @@ const CategoryComponent: React.FC = () => {
     const [categories, setCategories] = useState<Category[]>([]);
 
     const loadCategories = async () => {
-        console.log("reload")
         try {
             const data = await fetchCategories();
-            console.log(data)
             setCategories(data);
         } catch (error) {
-            console.error('Error loading categories:', error);
+            Error('Error loading categories:' + error);
         }
     };
 
     const handleAddCategory = async (newCategory: Omit<Category, 'id'>) => {
         try {
             await addCategory(newCategory);
-            
             await loadCategories();
         } catch (error) {
-            console.error('Error adding category:', error);
+            Error('Error adding category:' + error);
         }
     };
 
     const handleDeleteCategory = async (id: number) => {
-        console.log("start delete");
         try {
             await deleteCategory(id);
-            console.log("Category deleted, loading categories...");
             await loadCategories();
         } catch (error) {
-            console.error('Error deleting category:', error);
+            Error('Error deleting category:' + error);
         }
-        console.log("final");
     };
 
     useEffect(() => {

@@ -62,7 +62,6 @@ export const modifyCategory = async (
 };
 
 export const deleteCategory = async (categoryId: number) => {
-    console.log("deleting " + categoryId)
     const response = await fetch(`${API_URL}/categories/${categoryId}/`, {
         method: "DELETE",
         headers: {
@@ -70,8 +69,10 @@ export const deleteCategory = async (categoryId: number) => {
         },
     });
 
-    console.log("deleted")
-    console.log(response.ok)
-    console.log(response)
-
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(
+            `Error: ${errorData.message || "Failed to modify category"}`,
+        );
+    }
 };
